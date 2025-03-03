@@ -8,7 +8,7 @@ const Comment = ({ commentDetails }: { commentDetails: comment }) => {
           src={commentDetails.img}
           width={96}
           height={96}
-          className="min-w-24"
+          className="min-w-24 rounded-full overflow-hidden"
           alt="profile img"
           loading="lazy"
         />

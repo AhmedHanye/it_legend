@@ -1,3 +1,4 @@
+import { getMaterialData } from "@/utils/data";
 import {
   faFacebook,
   faLinkedin,
@@ -12,13 +13,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Material = () => {
-  const materialData = {
-    duration: "3 weeks",
-    lessons: 8,
-    enrolled: 65,
-    languages: ["English", "Arabic"],
-  };
+const Material = async ({ courseId }: courseId) => {
+  const materialData = await getMaterialData(courseId);
   return (
     <>
       <div
@@ -28,7 +24,7 @@ const Material = () => {
         <iframe
           width="100%"
           height="100%"
-          src="https://www.youtube.com/embed/vN4iSTbNnfQ?si=pGgvQjYw7T7KpQfM"
+          src={materialData.videoUrl}
           title="YouTube video player"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           referrerPolicy="strict-origin-when-cross-origin"
@@ -37,24 +33,32 @@ const Material = () => {
         />
       </div>
       <div id="course-links" className="py-8 flex gap-x-4 text-gray-600">
-        <a href="" 
-        aria-label="facebook"
-        className="p-2 rounded-full border-2 hover:bg-gray-100">
+        <a
+          href=""
+          aria-label="facebook"
+          className="p-2 rounded-full border-2 hover:bg-gray-100"
+        >
           <FontAwesomeIcon icon={faFacebook} className="size-5" />
         </a>
-        <a href="" 
-        aria-label="linkedin"
-        className="p-2 rounded-full border-2 hover:bg-gray-100">
+        <a
+          href=""
+          aria-label="linkedin"
+          className="p-2 rounded-full border-2 hover:bg-gray-100"
+        >
           <FontAwesomeIcon icon={faLinkedin} className="size-5" />
         </a>
-        <a href="" 
-        aria-label="twitter"
-        className="p-2 rounded-full border-2 hover:bg-gray-100">
+        <a
+          href=""
+          aria-label="twitter"
+          className="p-2 rounded-full border-2 hover:bg-gray-100"
+        >
           <FontAwesomeIcon icon={faSquareXTwitter} className="size-5" />
         </a>
-        <a href="" 
-        aria-label="youtube"
-        className="p-2 rounded-full border-2 hover:bg-gray-100">
+        <a
+          href=""
+          aria-label="youtube"
+          className="p-2 rounded-full border-2 hover:bg-gray-100"
+        >
           <FontAwesomeIcon icon={faYoutube} className="size-5" />
         </a>
       </div>

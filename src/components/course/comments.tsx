@@ -3,31 +3,10 @@ import Comment from "./comment";
 import { Textarea } from "../ui/textarea";
 import { Button } from "../ui/button";
 import { ArrowRight } from "lucide-react";
+import { getComments } from "@/utils/data";
 
-const Comments = () => {
-  const commentsDetails: comment[] = [
-    {
-      img: "/profile_img.svg",
-      name: "Student Name Goes Here",
-      date: "Oct 10, 2021",
-      comment:
-        "Lorem ipsum dolor sit ametr consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    },
-    {
-      img: "/profile_img.svg",
-      name: "Student Name Goes Here",
-      date: "Oct 10, 2021",
-      comment:
-        "Lorem ipsum dolor sit ametr consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    },
-    {
-      img: "/profile_img.svg",
-      name: "Student Name Goes Here",
-      date: "Oct 10, 2021",
-      comment:
-        "Lorem ipsum dolor sit ametr consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    },
-  ];
+const Comments = async ({ courseId }: courseId) => {
+  const commentsDetails: comment[] = await getComments(courseId);
   return (
     <>
       <h2 className="heading2">Comments</h2>
@@ -38,7 +17,7 @@ const Comments = () => {
       </div>
       <form action="" className="px-5">
         <Textarea
-          className="h-44  my-8 !text-2xl pt-5 px-4"
+          className="h-44  my-8 !text-2xl pt-5 px-4 shadow-[0px_0px_30.5px_15px_rgba(0,0,0,0.04)]"
           placeholder="Write a comment"
         />
         <Button
